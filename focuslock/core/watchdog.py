@@ -7,7 +7,6 @@ class Watchdog:
         self.locker = Locker()
 
     def check_and_relock(self):
-        active_lock_state = self.db.get_active_lockstate()
-        if active_lock_state:
+        if active_lock_state := self.db.get_active_lockstate():
             print("Active lock state found on startup. Re-engaging lock.")
             self.locker.start_lock(active_lock_state)
