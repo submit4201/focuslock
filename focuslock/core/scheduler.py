@@ -11,10 +11,16 @@ class Scheduler:
         self.locker = Locker()
 
     def check_due_reminders(self):
-        now = datetime.now()
+        from datetime import timezone
+
+        now = datetime.now(timezone.utc)
         reminders = self.db.get_all_reminders()
         for reminder in reminders:
-            if not reminder.completed and reminder.due_time <= now:
+            # Ensure due_time is timezone-aware (assume UTC if naive)
+            due_time = reminder.due_time
+            if due_time.tzinfo is None:
+                due_time = due_time.replace(tzinfo=timezone.utc)
+            if not reminder.completed and due_time <= now:
                 if reminder.lock_enabled:
                     lock_end_time = now + timedelta(hours=1)  # Default lock time
                     lock_state = LockState(
