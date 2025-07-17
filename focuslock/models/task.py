@@ -2,7 +2,7 @@ import uuid
 
 class Task:
     def __init__(self, title: str, task_type: str, requirement: str, task_id: str = None, fulfilled: bool = False, notes: str = ""):
-        self.id = task_id if task_id else str(uuid.uuid4())
+        self.id = task_id or str(uuid.uuid4())
         self.title = title
         self.type = task_type
         self.requirement = requirement
