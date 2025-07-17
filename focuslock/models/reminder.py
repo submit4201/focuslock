@@ -8,7 +8,7 @@ class Reminder:
         self.description = description
         self.due_time = due_time
         self.lock_enabled = lock_enabled
-        self.whitelist = whitelist if whitelist else []
+        self.whitelist = whitelist or []
         self.task_id = task_id
         self.completed = completed
 
