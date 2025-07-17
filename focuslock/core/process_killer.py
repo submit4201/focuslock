@@ -6,6 +6,12 @@ class ProcessKiller:
         self.whitelist_manager = whitelist_manager
         self.running = False
 
+    def __init__(self, whitelist_manager):
+        self.whitelist_manager = whitelist_manager
+        self.running = False
+        import logging
+        self.logger = logging.getLogger(__name__)
+
     def start(self):
         self.running = True
         while self.running:
@@ -14,7 +20,7 @@ class ProcessKiller:
                     try:
                         p = psutil.Process(proc.info['pid'])
                         p.kill()
-                        print(f"Killed process: {proc.info['name']}")
+                        self.logger.info(f"Killed process: {proc.info['name']}")
                     except (psutil.NoSuchProcess, psutil.AccessDenied):
                         pass
             time.sleep(5)
