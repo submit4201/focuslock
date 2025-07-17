@@ -1,9 +1,9 @@
 import unittest
 from unittest.mock import Mock, patch
 from datetime import datetime, timedelta
-from focuslock.core.scheduler import Scheduler
-from focuslock.models.reminder import Reminder
-from focuslock.models.task import Task
+from core.scheduler import Scheduler
+from models.reminder import Reminder
+from models.task import Task
 
 class TestScheduler(unittest.TestCase):
     def setUp(self):
@@ -21,7 +21,7 @@ class TestScheduler(unittest.TestCase):
         )
         self.db.get_all_reminders.return_value = [reminder]
 
-        with patch('focuslock.core.locker.Locker') as mock_locker:
+        with patch('core.locker.Locker') as mock_locker:
             self.scheduler.locker = mock_locker.return_value
             self.scheduler.check_due_reminders()
             self.db.save_lockstate.assert_called_once()

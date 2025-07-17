@@ -1,9 +1,9 @@
 import schedule
 import time
 from datetime import datetime, timedelta
-from focuslock.db.database import Database
-from focuslock.core.locker import Locker
-from focuslock.models.lockstate import LockState
+from db.database import Database
+from core.locker import Locker
+from models.lockstate import LockState
 
 class Scheduler:
     def __init__(self, db: Database):

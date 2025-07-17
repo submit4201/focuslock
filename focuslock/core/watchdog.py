@@ -1,5 +1,5 @@
-from focuslock.db.database import Database
-from focuslock.core.locker import Locker
+from db.database import Database
+from core.locker import Locker
 
 class Watchdog:
     def __init__(self, db: Database):

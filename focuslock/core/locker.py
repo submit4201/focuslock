@@ -1,4 +1,4 @@
-from focuslock.models.lockstate import LockState
+from models.lockstate import LockState
 
 class Locker:
     def __init__(self):

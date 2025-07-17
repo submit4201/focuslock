@@ -1,10 +1,10 @@
 import sqlite3
-from focuslock.models.reminder import Reminder
-from focuslock.models.task import Task
-from focuslock.models.lockstate import LockState
+from models.reminder import Reminder
+from models.task import Task
+from models.lockstate import LockState
 
 class Database:
-    def __init__(self, db_path='focuslock.db'):
+    def __init__(self, db_path='db'):
         self.db_path = db_path
         self.conn = None
 

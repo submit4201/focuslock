@@ -1,10 +1,10 @@
 import unittest
 import os
 from datetime import datetime, timedelta
-from focuslock.db.database import Database
-from focuslock.models.reminder import Reminder
-from focuslock.models.task import Task
-from focuslock.models.lockstate import LockState
+from ..database import Database
+from models.reminder import Reminder
+from models.task import Task
+from models.lockstate import LockState
 
 class TestDatabase(unittest.TestCase):
     def setUp(self):
