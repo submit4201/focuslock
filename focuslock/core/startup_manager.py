@@ -17,7 +17,8 @@ class StartupManager:
 
     def enable_startup(self):
         script_path = self.get_script_path()
-        self.startup.add("FocusLock", f'python "{script_path}"')
+        import sys
+        self.startup.add("FocusLock", f'"{sys.executable}" "{script_path}"')
 
     def disable_startup(self):
         self.startup.remove("FocusLock")
